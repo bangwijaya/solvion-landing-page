@@ -1626,40 +1626,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--neon-cyan);
 }
 
-/* Responsive adjustments */
-@media (max-width: 580px) {
-  .mobile-slider-outer-wrapper {
-    gap: 16px;
-  }
-  .mobile-slider-btn {
-    width: 44px;
-    height: 44px;
-  }
-  .mobile-phone-frame {
-    max-width: 280px;
-    height: 560px;
-    border-width: 10px;
-    border-radius: 40px;
-  }
-}
-
-@media (max-width: 420px) {
-  .mobile-slider-outer-wrapper {
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  .mobile-slider-btn.mobile-slider-prev {
-    order: 2;
-  }
-  .mobile-phone-frame {
-    order: 1;
-    max-width: 270px;
-    height: 540px;
-  }
-  .mobile-slider-btn.mobile-slider-next {
-    order: 3;
-  }
-}
+/* (Catatan: Responsive smartphone slider dikelola secara terpusat pada blok Responsive Design di akhir file) */
 
 /* ==========================================================================
    WORKFLOW / ALUR KERJA (4 LANGKAH PRESISI)
@@ -2201,38 +2168,15 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(-50%) translateX(0);
 }
 
-/* Penyesuaian Responsif untuk Layar HP */
-@media (max-width: 640px) {
-  .whatsapp-float {
-    bottom: 20px;
-    right: 20px;
-    width: 52px;
-    height: 52px;
-  }
-
-  .whatsapp-icon {
-    width: 28px;
-    height: 28px;
-  }
-
-  .whatsapp-tooltip {
-    display: none;
-  }
-
-  .toast-notification {
-    bottom: 84px;
-    right: 20px;
-  }
-}
-
 /* ==========================================================================
-   RESPONSIVE DESIGN (MOBILE & TABLET)
+   RESPONSIVE DESIGN SYSTEM (MOBILE, TABLET & SMALL DEVICES)
    ========================================================================== */
 
+/* Tablet & Medium Screens */
 @media (max-width: 1024px) {
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 60px;
+    gap: 50px;
     text-align: center;
   }
 
@@ -2283,63 +2227,886 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Smartphone & Mobile Screens (Primary Mobile Breakpoint: max-width 768px) */
 @media (max-width: 768px) {
+  /* Prevent Any Horizontal Overflow */
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw;
+  }
+
+  .container {
+    padding: 0 18px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Section Spacing */
+  .hero-section {
+    padding: 100px 0 50px 0;
+    min-height: auto;
+  }
+
+  .values-section,
+  .services-section,
+  .showcase-section,
+  .mobile-showcase-section,
+  .workflow-section {
+    padding: 60px 0;
+  }
+
+  .contact-section {
+    padding: 60px 0 40px 0;
+  }
+
+  /* Section Headers & Typography */
+  .section-header {
+    margin-bottom: 36px;
+    padding: 0 4px;
+    text-align: center;
+  }
+
+  .section-title {
+    font-size: clamp(1.65rem, 5.5vw, 2.2rem);
+    margin-bottom: 14px;
+    line-height: 1.25;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+
+  .section-tag {
+    font-size: 0.75rem;
+    padding: 5px 14px;
+    margin-bottom: 14px;
+  }
+
+  /* Navigation Bar & Mobile Drawer */
+  .navbar {
+    padding: 14px 0;
+  }
+
+  .nav-container {
+    padding: 0 18px;
+    width: 100%;
+  }
+
+  .nav-brand {
+    gap: 10px;
+  }
+
+  .brand-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .brand-name {
+    font-size: 1.22rem;
+  }
+
+  .brand-name span {
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
+  }
+
+  .nav-actions {
+    gap: 10px;
+  }
+
+  .nav-status {
+    display: none !important;
+  }
+
+  .nav-actions .btn-primary {
+    display: none !important; /* Disembunyikan di header HP agar tidak sesak, fokus di drawer & hero */
+  }
+
+  .mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: var(--radius-sm);
+    z-index: 1002;
+    touch-action: manipulation;
+  }
+
   .nav-menu {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 280px;
+    width: min(300px, 82vw);
     height: 100vh;
-    background: rgba(5, 8, 17, 0.96);
-    backdrop-filter: blur(24px);
+    background: rgba(5, 8, 17, 0.98);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
     flex-direction: column;
-    align-items: flex-start;
-    padding: 90px 30px 40px 30px;
-    gap: 20px;
+    align-items: stretch;
+    padding: 85px 24px 40px 24px;
+    gap: 12px;
     border-left: 1px solid var(--border-subtle);
     transition: right var(--transition-smooth);
     z-index: 1001;
+    overflow-y: auto;
   }
 
   .nav-menu.open {
     right: 0;
   }
 
-  .mobile-toggle {
-    display: flex;
-    z-index: 1002;
+  .nav-link {
+    display: block;
+    width: 100%;
+    font-size: 1.05rem;
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
   }
 
-  .nav-status {
+  .nav-link:hover, .nav-link.active {
+    background: rgba(0, 240, 255, 0.08);
+    color: var(--neon-cyan);
+  }
+
+  .nav-link::after {
     display: none;
+  }
+
+  /* 1. HERO SECTION (Vertical Stack 100% Width) */
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    gap: 36px;
+    text-align: center;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100% !important;
+    text-align: center;
+  }
+
+  .hero-badge {
+    font-size: 0.78rem;
+    padding: 6px 14px;
+    margin-bottom: 18px;
+    max-width: 100%;
+  }
+
+  .hero-title {
+    font-size: clamp(1.9rem, 7vw, 2.6rem);
+    line-height: 1.2;
+    margin-bottom: 16px;
+    width: 100%;
+    word-break: break-word;
+  }
+
+  .hero-subtitle {
+    font-size: 0.96rem;
+    line-height: 1.65;
+    margin-bottom: 28px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 12px;
+    align-items: stretch;
+    margin-bottom: 32px;
+  }
+
+  .hero-cta-group .btn {
+    width: 100% !important;
+    justify-content: center;
+    min-height: 48px;
+    padding: 14px 22px;
+    font-size: 1rem;
+    touch-action: manipulation;
+  }
+
+  .hero-trust {
+    flex-direction: column !important;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    width: 100% !important;
+    padding-top: 20px;
+  }
+
+  .trust-text {
+    font-size: 0.82rem;
+  }
+
+  /* Hero Visual & 3D Interactive Card */
+  .hero-visual {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto;
+    perspective: none !important;
+    transform: none !important;
+  }
+
+  .hero-card-3d {
+    width: 100% !important;
+    padding: 20px 16px;
+    border-radius: var(--radius-md);
+    transform: none !important;
+  }
+
+  /* Reset absolute floating badges to stack cleanly without causing horizontal scroll */
+  .float-badge {
+    position: static !important;
+    width: 100% !important;
+    margin-bottom: 12px;
+    animation: none !important;
+    transform: none !important;
+    justify-content: center;
+    padding: 10px 14px;
+    box-sizing: border-box;
+  }
+
+  .float-badge-1 {
+    top: auto;
+    right: auto;
+    margin-bottom: 12px;
+  }
+
+  .float-badge-2 {
+    bottom: auto;
+    left: auto;
+    margin-bottom: 14px;
+  }
+
+  .card-topbar {
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+  }
+
+  .topbar-status {
+    font-size: 0.68rem;
+  }
+
+  .card-metrics-grid {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    gap: 10px;
+  }
+
+  .metric-box {
+    padding: 12px;
+  }
+
+  .metric-val {
+    font-size: 1.35rem;
+  }
+
+  .card-chart-area {
+    padding: 12px;
+  }
+
+  .chart-svg {
+    height: 65px;
+  }
+
+  .card-tags {
+    justify-content: center;
+    gap: 6px;
+  }
+
+  /* 2. STATS BANNER (Vertical Stack 100% Width) */
+  .stats-banner {
+    margin-top: 36px;
+    padding: 24px 0;
   }
 
   .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    gap: 20px;
   }
 
-  .stat-item:nth-child(2)::after {
-    display: none;
+  .stat-item {
+    width: 100% !important;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-subtle);
   }
 
-  .slider-nav-btn {
-    display: none; /* Mobile uses touch swipe */
+  .stat-item:last-child {
+    border-bottom: none;
+  }
+
+  .stat-item::after {
+    display: none !important;
+  }
+
+  .stat-number {
+    font-size: 2.3rem;
+  }
+
+  .stat-desc {
+    font-size: 0.82rem;
+  }
+
+  /* 3. NILAI PERUSAHAAN (Values Grid - Vertical Stack 100% Width) */
+  .values-grid {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    gap: 18px;
+  }
+
+  .value-card {
+    width: 100% !important;
+    padding: 26px 20px;
+    border-radius: var(--radius-md);
+  }
+
+  .value-icon-wrapper {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 18px;
+  }
+
+  .value-title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+  }
+
+  .value-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  /* 4. LAYANAN UTAMA (Services Grid - Vertical Stack 100% Width) */
+  .services-grid {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 22px;
+  }
+
+  .service-card {
+    width: 100% !important;
+    padding: 28px 20px;
+    border-radius: var(--radius-lg);
+  }
+
+  .service-number {
+    top: 18px;
+    right: 20px;
+    font-size: 1.25rem;
+  }
+
+  .service-icon {
+    width: 54px;
+    height: 54px;
+    margin-bottom: 20px;
+    border-radius: var(--radius-md);
+  }
+
+  .service-title {
+    font-size: 1.35rem;
+    margin-bottom: 12px;
+  }
+
+  .service-desc {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    margin-bottom: 22px;
+  }
+
+  .service-features {
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .service-features li {
+    font-size: 0.85rem;
+  }
+
+  .service-footer {
+    flex-direction: column !important;
+    align-items: flex-start;
+    gap: 12px;
+    padding-top: 16px;
+    width: 100% !important;
+  }
+
+  .service-btn {
+    width: 100% !important;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.95rem;
+    touch-action: manipulation;
+  }
+
+  /* 5. SHOWCASE PORTOFOLIO SLIDER */
+  .slider-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .slider-viewport {
+    border-radius: var(--radius-lg);
+    width: 100% !important;
+  }
+
+  .slide-item {
+    width: 100% !important;
+    min-width: 100% !important;
   }
 
   .slide-image-box {
-    height: 400px;
+    height: 380px;
+    width: 100% !important;
   }
 
   .slide-overlay {
-    padding: 24px 20px;
+    padding: 22px 18px;
   }
 
+  .slide-category {
+    font-size: 0.72rem;
+    margin-bottom: 8px;
+  }
+
+  .slide-title {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+  }
+
+  .slide-desc {
+    font-size: 0.84rem;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .slide-meta {
+    flex-direction: column !important;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100% !important;
+  }
+
+  .slide-tags {
+    width: 100% !important;
+    gap: 6px;
+  }
+
+  .slide-tag {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+  }
+
+  .slide-meta .btn {
+    width: 100% !important;
+    justify-content: center;
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+
+  .slider-nav-btn {
+    display: none !important;
+  }
+
+  .slider-indicators {
+    margin-top: 20px;
+  }
+
+  /* 6. MOBILE APPS SHOWCASE SMARTPHONE SLIDER */
+  .mobile-slider-outer-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 30px auto 20px;
+    padding: 0;
+  }
+
+  .mobile-phone-frame {
+    width: 100% !important;
+    max-width: min(280px, 70vw) !important;
+    height: auto;
+    aspect-ratio: 9 / 18.5;
+    max-height: 540px;
+    border-width: 8px;
+    border-radius: 36px;
+  }
+
+  .mobile-slider-btn {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    flex-shrink: 0;
+    touch-action: manipulation;
+  }
+
+  .mobile-slide-overlay {
+    padding: 16px 14px 20px;
+  }
+
+  .mobile-slide-category {
+    font-size: 0.65rem;
+    margin-bottom: 4px;
+  }
+
+  .mobile-slide-title {
+    font-size: 1.15rem;
+    margin-bottom: 6px;
+  }
+
+  .mobile-slide-desc {
+    font-size: 0.76rem;
+    line-height: 1.45;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .mobile-slide-tags {
+    gap: 5px;
+    margin-bottom: 12px;
+  }
+
+  .mobile-slide-tag {
+    font-size: 0.62rem;
+    padding: 2px 7px;
+  }
+
+  .mobile-slide-cta {
+    font-size: 0.78rem;
+    min-height: 42px;
+    padding: 10px 16px;
+    touch-action: manipulation;
+  }
+
+  .mobile-platform-badges {
+    flex-direction: column !important;
+    width: 100% !important;
+    align-items: stretch;
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .platform-badge {
+    width: 100% !important;
+    justify-content: center;
+    padding: 12px 18px;
+    min-height: 44px;
+  }
+
+  /* 7. ALUR KERJA (Workflow Grid - Vertical Stack 100% Width) */
   .workflow-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    gap: 18px;
+  }
+
+  .workflow-step {
+    width: 100% !important;
+    padding: 24px 20px;
+    border-radius: var(--radius-md);
+  }
+
+  .step-number {
+    font-size: 1.85rem;
+    margin-bottom: 10px;
+  }
+
+  .step-title {
+    font-size: 1.18rem;
+    margin-bottom: 8px;
+  }
+
+  .step-desc {
+    font-size: 0.85rem;
+  }
+
+  /* 8. KONTAK & FORM KONSULTASI (Contact Grid - Vertical Stack 100% Width) */
+  .cta-box-glow {
+    padding: 28px 18px;
+    border-radius: var(--radius-lg);
+    width: 100% !important;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    gap: 32px;
+  }
+
+  .contact-info-col {
+    width: 100% !important;
+  }
+
+  .contact-info-col h2 {
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    margin-bottom: 14px;
+  }
+
+  .contact-info-col p {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    margin-bottom: 24px;
+  }
+
+  .contact-cards {
+    width: 100% !important;
+    gap: 12px;
+  }
+
+  .contact-channel {
+    width: 100% !important;
+    padding: 14px 16px;
+    min-height: 48px;
+    border-radius: var(--radius-sm);
+  }
+
+  .channel-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .channel-info strong {
+    font-size: 0.9rem;
+  }
+
+  .channel-info span {
+    font-size: 0.78rem;
+  }
+
+  .contact-form {
+    width: 100% !important;
+    padding: 24px 16px;
+    border-radius: var(--radius-md);
+  }
+
+  .form-group {
+    margin-bottom: 18px;
+  }
+
+  .form-label {
+    font-size: 0.82rem;
+    margin-bottom: 6px;
+  }
+
+  .form-input, .form-select, .form-textarea {
+    width: 100% !important;
+    min-height: 48px;
+    font-size: 16px; /* 16px mencegah iOS auto zoom */
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    box-sizing: border-box;
+  }
+
+  .form-textarea {
+    min-height: 100px;
+  }
+
+  .form-submit-btn {
+    width: 100% !important;
+    min-height: 48px;
+    font-size: 1rem;
+    padding: 14px 20px;
+    touch-action: manipulation;
+  }
+
+  /* 9. FOOTER (Vertical Stack 100% Width) */
+  .footer {
+    padding: 50px 0 25px 0;
   }
 
   .footer-top {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    gap: 30px;
+    margin-bottom: 35px;
+  }
+
+  .footer-brand p {
+    max-width: 100% !important;
+    font-size: 0.88rem;
+    margin-top: 12px;
+  }
+
+  .footer-title {
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+  }
+
+  .footer-links {
+    gap: 10px;
+  }
+
+  .footer-link {
+    display: inline-block;
+    padding: 6px 0;
+    min-height: 36px;
+    font-size: 0.88rem;
+  }
+
+  .social-links {
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .social-btn {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+
+  .footer-bottom {
+    flex-direction: column !important;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    padding-top: 24px;
+  }
+
+  .footer-copy {
+    font-size: 0.82rem;
+  }
+
+  .footer-legal {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .footer-legal a {
+    display: inline-block;
+    padding: 4px 6px;
+    min-height: 36px;
+    font-size: 0.82rem;
+  }
+
+  /* 10. FLOATING WHATSAPP & BACK TO TOP */
+  .whatsapp-float {
+    bottom: 20px;
+    right: 18px;
+    width: 54px;
+    height: 54px;
+    min-width: 54px;
+    min-height: 54px;
+    touch-action: manipulation;
+  }
+
+  .whatsapp-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .whatsapp-tooltip {
+    display: none !important;
+  }
+
+  .back-to-top {
+    bottom: 20px;
+    left: 18px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+
+  .toast-notification {
+    bottom: 84px;
+    right: 16px;
+    left: 16px;
+    width: auto;
+    max-width: calc(100vw - 32px);
+    font-size: 0.85rem;
+    padding: 12px 16px;
   }
 }
+
+/* Extra Small Phones (max-width: 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 14px;
+  }
+
+  .hero-section {
+    padding: 85px 0 40px 0;
+  }
+
+  .hero-title {
+    font-size: 1.85rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.92rem;
+  }
+
+  .section-title {
+    font-size: 1.55rem;
+  }
+
+  .slide-image-box {
+    height: 350px;
+  }
+
+  .mobile-slider-outer-wrapper {
+    position: relative;
+    max-width: 290px;
+    margin: 24px auto 16px;
+  }
+
+  .mobile-phone-frame {
+    max-width: 260px !important;
+    height: 500px;
+    border-width: 7px;
+  }
+
+  .mobile-slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 35;
+    background: rgba(5, 8, 17, 0.92);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+  }
+
+  .mobile-slider-prev {
+    left: -8px;
+  }
+
+  .mobile-slider-next {
+    right: -8px;
+  }
+
+  .btn-lg {
+    padding: 12px 20px;
+    font-size: 0.95rem;
+  }
+
+  .cta-box-glow {
+    padding: 22px 14px;
+  }
+}
+
